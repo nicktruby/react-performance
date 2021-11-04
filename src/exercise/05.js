@@ -39,7 +39,7 @@ function AppProvider({children}) {
     dogName: '',
     grid: initialGrid,
   })
-  
+
   return (
     <AppStateContext.Provider value={state}>
       <AppDispatchContext.Provider value={dispatch}>
@@ -60,7 +60,9 @@ function useAppState() {
 function useAppDispatch() {
   const context = React.useContext(AppDispatchContext)
   if (!context) {
-    throw new Error('useAppDispatch must be used within the AppDispatchProvider')
+    throw new Error(
+      'useAppDispatch must be used within the AppDispatchProvider',
+    )
   }
   return context
 }
