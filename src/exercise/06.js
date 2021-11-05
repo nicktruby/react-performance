@@ -113,7 +113,7 @@ function withStateSlice(Comp, slice) {
     return <MemoComp ref={ref} state={slice(state, props)} {...props} />
   }
   Wrapper.displayName = `withStateSlice(${Comp.displayName || Comp.name})`
-  return React.memo(React.forwardRef(Wrapper, ref))
+  return React.memo(React.forwardRef(Wrapper))
 }
 
 // const cell = state.grid[row][column]
