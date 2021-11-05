@@ -77,9 +77,7 @@ function DogProvider(props) {
     dogName: '',
   })
   const value = [state, dispatch]
-  return (
-    <DogContext.Provider value={value} {...props} />
-  )
+  return <DogContext.Provider value={value} {...props} />
 }
 
 function useDogState() {
@@ -111,6 +109,11 @@ Grid = React.memo(Grid)
 function Cell({row, column}) {
   const state = useAppState()
   const cell = state.grid[row][column]
+  return <CellImpl cell={cell} row={row} column={column} />
+}
+Cell = React.memo(Cell)
+
+function CellImpl({cell, row, column}) {
   const dispatch = useAppDispatch()
   const handleClick = () => dispatch({type: 'UPDATE_GRID_CELL', row, column})
   return (
